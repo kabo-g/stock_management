@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import FormView
 from django.views.generic import View
 
 from .forms import StockForm
@@ -15,26 +16,23 @@ class Homepage(View):
         return render(request, self.template_name, context)
 
 
-class AddForm(View):
-    template_name = "stock/homepage.html"
-    form = StockForm
-    model = Stock()
+class AddForm(FormView):
+    template_name = "stock/add_form.html"
+    form_class = StockForm
+    model = Stock
     #
     def get(self, request, *args, **kwargs):
-        form = StockForm(request.POST or None)
+        form = self.form_class(initial = self.initial)
         context = {"form" : form}
         return render(request, self.template_name, context)
 
 
-
     def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            form = StockForm(request.POST or None)
-            if form.is_valid():
-                form.save()
-            else:
-                form
-            context = {"form" : form}
-            return render(request, self.template_name, context)
+
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
         else:
-            return render(request, self.template_name, context)
+            form
+        context = {"form" : form}
+        return render(request, self.template_name, context)

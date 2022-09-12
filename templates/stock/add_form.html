@@ -3,7 +3,7 @@
 {% block title %} <title>Add items</title> {% endblock title %}
 
 {% block content %}
-  <form class="" action="{% url 'homepage' %}" method="post">
+  <form class="" action="{% url 'add_item' %}" method="post">
     {% csrf_token %}
     {{ form }}
     <button type="submit" name="button">Save</button>
