@@ -3,5 +3,7 @@
 {% block title %} <title>Home</title> {% endblock title %}
 
 {% block content %}
-  Something here
+  {% for i in stock %}
+    {{ i }}
+  {% endfor %}
 {% endblock content %}
