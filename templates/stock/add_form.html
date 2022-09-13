@@ -5,9 +5,12 @@
 {% block title %} <title>Add items</title> {% endblock title %}
 
 {% block content %}
-  <form class="form " action="{% url 'add_item' %}" method="post">
-    {% csrf_token %}
-    {{ form | crispy}}
-    <button type="submit" class="btn btn-primary block-primary" name="button">Save</button>
-  </form>
+  <div class="container p-2 mt-5">
+    <form class="form " action="{% url 'add_item' %}" method="post">
+      <p>Add items</p>
+      {% csrf_token %}
+      {{ form | crispy}}
+      <button type="submit" class="btn btn-primary" name="button">Save</button>
+    </form>
+  </div>
 {% endblock content %}
