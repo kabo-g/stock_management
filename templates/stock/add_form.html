@@ -1,11 +1,13 @@
 {% extends '../base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %} <title>Add items</title> {% endblock title %}
 
 {% block content %}
-  <form class="" action="{% url 'add_item' %}" method="post">
+  <form class="form " action="{% url 'add_item' %}" method="post">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit" name="button">Save</button>
+    {{ form | crispy}}
+    <button type="submit" class="btn btn-primary block-primary" name="button">Save</button>
   </form>
 {% endblock content %}
