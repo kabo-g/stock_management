@@ -7,7 +7,7 @@ from .models import Stock, Invoice
 
 # Create your views here.
 class Homepage(View):
-    template_name = "stock/homepage.h  tml"
+    template_name = "stock/homepage.html"
     model = Stock.objects.all()
 
 
