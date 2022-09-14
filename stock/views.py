@@ -7,7 +7,7 @@ from .models import Stock, Invoice
 
 # Create your views here.
 class Homepage(View):
-    template_name = "stock/homepage.html"
+    template_name = "stock/homepage.h  tml"
     model = Stock.objects.all()
 
 
@@ -56,3 +56,13 @@ class AddInvoice(FormView):
             form
         context = {"form" : form}
         return redirect('/')
+
+class ListInvoice(View):
+
+    model = Invoice
+    template_name = 'stock/invoice_show.html'
+
+    def get(self, request, *args, **kwargs):
+        invoices = self.model.objects.all()
+        context = {"invoices" : invoices}
+        return render(request, self.template_name, context)

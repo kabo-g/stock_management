@@ -11,12 +11,57 @@
       {% csrf_token %}
       <div class="row">
         <div class="col-sm-6">
-          <div class="form-group col-md-6">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.invoice_date | as_crispy_field }}
+                {{ form.customer_name | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.invoice_number | as_crispy_field }}
+                {{ form.phone_number | as_crispy_field }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.line_one | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ form.line_one_quantity | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ form.line_one_unit_price | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ form.line_one_total_price | as_crispy_field }}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.line_two | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ form.line_two_quantity | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ form.line_two_unit_price | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ form.line_two_total_price | as_crispy_field }}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+                {{ form.invoice_type | as_crispy_field }}
+            </div>
+            <div class="form-group col-md-12">
+                {{ form.total_price | as_crispy_field }}
+            </div>
 
           </div>
         </div>
       </div>
-      {{ form | crispy}}
       <button type="submit" class="btn btn-primary" name="button">Save</button>
     </form>
   </div>

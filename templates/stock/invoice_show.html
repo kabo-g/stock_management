@@ -1,0 +1,30 @@
+{% extends '../base.html' %}
+
+{% block title%} <title>Show</title> {% endblock title %}
+
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>COUNT</th>
+        <th>DATE</th>
+        <th>CUSTOMER NAME</th>
+        <th>INVOICE NUMBER</th>
+        <th>TOTAL</th>
+      </tr>
+
+      <tbody>
+          {% for i in invoices  %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.invoice_date }}</td>
+            <td>{{ i.customer_name }}</td>
+            <td>{{ i.invoice_number }}</td>
+            <td>{{ i.total_price }}</td>
+        </tr>
+          {% endfor %}
+      </tbody>
+    </thead>
+  </table>
+{% endblock content %}
